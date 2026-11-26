@@ -21,7 +21,7 @@ import (
 )
 
 var publicKey string
-var website = "https://kotokowa.github.io/webtools/water-wave/"
+var website = "https://kotokowa.github.io/FresnelWaterwave/"
 
 func verify(root string) error {
  data, err := os.ReadFile(filepath.Join(root,"provenance.json")); if err != nil { return err }

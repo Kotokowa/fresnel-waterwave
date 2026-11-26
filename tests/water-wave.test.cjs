@@ -12,9 +12,6 @@ test('static build ships the exact desktop Python core and separate tool assets'
   for (const name of ['index.html','app.js','ui-utils.js','video-worker.js','style.css','workbench.css','worker.js','guide.html','LICENSE-FCD.txt']) {
     assert.ok(fs.statSync(path.join(root,'dist/water-wave',name)).size > 0);
   }
-  const offline = fs.readFileSync(path.join(root,'dist/nfc-offline.html'),'utf8');
-  assert.ok(!offline.includes('pyodide'));
-  assert.ok(!offline.includes('water-wave'));
 });
 
 test('browser legend and Python rendering share identical palette tables', () => {
@@ -85,12 +82,4 @@ test('result names strip image frame padding but keep complete video stems', () 
 test('tab progress distinguishes restoring from packing', () => {
   assert.match(progressTitle(1,3),/^恢复中-33%（1\/3）/);
   assert.match(progressTitle(3,3,true),/^恢复中-100%（3\/3，打包中）/);
-});
-
-test('new tool remains separate and raw NFC fragment routing keeps priority', () => {
-  const app = fs.readFileSync(path.join(root,'src/app.js'),'utf8');
-  assert.ok(app.includes("id: 'water-wave'"));
-  const fragment = app.indexOf('if (location.hash.length > 1) return mountNfc(location.hash)');
-  assert.ok(fragment > 0);
-  assert.ok(fragment < app.indexOf("const tool = new URLSearchParams(location.search).get('tool')"));
 });

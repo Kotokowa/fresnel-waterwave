@@ -1,6 +1,6 @@
 # Water Wave Lab GPU 加速器
 
-作者：kotokowa。在线工具：https://kotokowa.github.io/webtools/water-wave/
+作者：kotokowa。在线工具：https://kotokowa.github.io/FresnelWaterwave/
 
 此包只包含水波工具。需要 Python 3.11 或更高版本；首次启动会联网安装 NumPy、SciPy、Pillow、OpenCV、pyFFTW 和 zlib-ng，完成安装后可离线使用本机网页。无需安装 Node.js。
 
