@@ -93,7 +93,7 @@ def validate(tag, assets):
     listed = {}
     for line in (base / 'SHA256SUMS.txt').read_text(encoding='utf-8').splitlines():
         digest, raw_name = line.split(maxsplit=1)
-        name = raw_name.removeprefix('*').removeprefix('./')
+        name = raw_name.removeprefix('*').removeprefix('./').removeprefix('packages/')
         if name not in original or not re.fullmatch(r'[0-9a-f]{64}', digest) or name in listed:
             raise ValueError(f'Unexpected manifest entry in {tag}: {line}')
         listed[name] = digest
